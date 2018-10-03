@@ -25,7 +25,7 @@ def a():
 	v()
 v()
 此时运行结果为：00
-							NameError: name 'greet' is not defined
+							NameError: name 'v' is not defined
 ```
 
 ```
