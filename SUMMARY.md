@@ -1,4 +1,6 @@
 # Table of contents
 
-* [自己的学习经历](README.md)
+* [对装饰器的理解](README.md)
+* [进一步了解函数](jin-yi-bu-le-jie-han-shu.md)
+* [装饰器的实质](zhuang-shi-qi-de-shi-zhi.md)
 
