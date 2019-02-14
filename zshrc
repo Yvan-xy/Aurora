@@ -158,8 +158,51 @@ alias proxyup="sslocal -c ~/sslocal.json"
 alias fuckup="export ALL_PROXY=socks5://127.0.0.1"
 alias fuckdown="unset ALL_PROXY"
 
+#校园网登录  
+function login(){
+    fuckdown
+    curl -s -d "DDDDD=libzhuanxian&upass=let1234&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
+    ip=`myip | grep IP | cut -d " " -f 2`
+    wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
+    wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
+    eth0_intranet=`ifconfig | grep -A 2 eth0 | grep "inet .*" -o | cut -d " " -f 2`
+    eth0_mac=`ifconfig | grep -A 2 eth0 | grep "inet6 .*" -o | cut -d " " -f 2`
+    if [[ $ip != '' ]]
+    then
+        echo "Login success!"
+        echo "Extranet ip: "$ip
+        if [[ $wlan0_intranet =~ "." ]]
+        then            
+            echo 1
+            echo "Intranet ip: "$wlan0_intranet
+            echo "MAC : "$wlan0_mac
+        elif [[ $eth0_intranet =~ "." ]]
+        then
+            echo "Intranet ip: "$eth0_intranet
+            echo "MAC : "$eth0_mac
+        fi
+    fi
+}
+
 #设置fucks
 eval $(thefuck --alias)
+
+#设置rtsp流读取
+alias fuckcam="ffplay  -rtsp_transport tcp"
+
+#查询大文件
+alias large="find / -size +100M"
+
+#查看pdf
+alias pdf="google-chrome"
+
+#编辑zshrc
+alias zshrc="vim ~/.zshrc"
+
+#web_pass解密 
+function webpass(){
+    java -classpath "/home/Hammer/USTB_HACK/result/Misc/" Cipher1 $1
+}
 
 #查看照片
 function show(){
