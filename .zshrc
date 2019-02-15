@@ -97,25 +97,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export ALL_PROXY=socks5://127.0.0.1:1080
-
-
-#将nodejs添加到环境变量
-export NODE_HOME=/usr/local/node/
-export PATH=$NODE_HOME/bin:$PATH
-
 
 #将go环境添加到环境变量
 export PATH=$PATH:/usr/local/go/bin
 
 #将nvm添加到环境变量
-export NVM_DIR="$HOME/.nvm"
+#export NVM_DIR="$HOME/.nvm"
 
 #将pwntools等工具添加到环境变量
 export PATH=$PATH:/usr/local/bin
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #nmap扫描主机
 alias fuck="nmap -O -A"
@@ -130,7 +123,7 @@ alias jackson="/home/Hammer/myProject.sh"
 alias postman="/home/Hammer/Postman/Postman"
 
 #启动githack
-alias githack="/home/Hammer/Githack/GitHack.py"
+alias githack="/home/Hammer/GitHack/GitHack.py"
 
 #启动heartbleed检测
 alias heartbleed="/home/Hammer/heartbleed/ssltest.py"
