@@ -137,3 +137,12 @@ alias heartbleed="/home/Hammer/heartbleed/ssltest.py"
 
 #启动androidStudio
 alias anstudio="/home/android-studio/bin/studio.sh"
+
+#连接ibeike
+alias ibeike="/home/code/shell/ibei.sh"
+
+#连接ali
+alias ali="/home/code/shell/ali.sh"
+
+#链接cent
+alias cent="/home/code/shell/cent.sh"
