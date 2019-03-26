@@ -1,4 +1,3 @@
-colorscheme molokai
 set background=dark
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -16,7 +15,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'bling/vim-airline'
 Plugin 'The-NERD-tree'
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
 
 " 安装插件写在这之前
 call vundle#end()            " required
