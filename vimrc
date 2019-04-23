@@ -15,6 +15,8 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'bling/vim-airline'
 Plugin 'The-NERD-tree'
+Plugin 'tomlion/vim-solidity'
+
 "Plugin 'w0rp/ale'
 
 " 安装插件写在这之前
