@@ -118,7 +118,7 @@ export PATH=$PATH:/usr/local/bin
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #nmap扫描主机
-alias fuck="nmap -O -A"
+alias shit="nmap -O -A"
 
 #查寻外网ip
 alias myip="curl https://tool.lu/ip/"
@@ -146,3 +146,7 @@ alias ali="/home/code/shell/ali.sh"
 
 #链接cent
 alias cent="/home/code/shell/cent.sh"
+
+eval $(thefuck --alias)
+. /usr/share/autojump/autojump.sh
+
