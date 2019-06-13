@@ -1,0 +1,10 @@
+{
+    "server": "us.f.cloudss.win",
+    "server_port": 10275,
+    "method": "rc4-md5",
+    "password": "661877700789dyf",
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "fast_open": true,
+    "workers": 1
+}
