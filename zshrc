@@ -144,9 +144,67 @@ alias ibeike="/home/code/shell/ibei.sh"
 #连接ali
 alias ali="/home/code/shell/ali.sh"
 
-#链接cent
+#连接cent
 alias cent="/home/code/shell/cent.sh"
 
+#连接404
+alias ever404="ssh -p2333 dyf@202.204.62.198"
+
+#设置时钟
+alias settime="ntpdate time.nist.gov"
+
+#设置代理
+alias proxyup="sslocal -c ~/sslocal.json"
+alias fuckup="export ALL_PROXY=socks5://127.0.0.1"
+alias fuckdown="unset ALL_PROXY"
+
+#设置fucks
 eval $(thefuck --alias)
+
+#查看照片
+function show(){
+    for name in $@
+    do
+        contain=`ls ./`
+        if echo "${contain[@]}" | grep -w $name'.jpg'
+        then
+            display $name'.jpg' &
+            continue
+        fi
+        if echo "${contain[@]}" | grep -w $name'.jpeg'
+        then
+            display $name'.jpeg' &
+            continue
+        fi
+        if echo "${contain[@]}" | grep -w $name'.png'
+        then
+            display $name'.png' &
+            continue
+        else
+            fuzz=`echo ${contain[@]} | grep $name`
+            echo $fuzz > .temp.txt
+            i=0
+            if [[ $(cat .temp.txt) > 20 ]]
+            then
+                echo 'if continue?(y/n)  (items more then 20)'
+                read choice
+                if [[ $choice == 'y' || $choice == 'Y' ]]
+                then 
+                    for line in $(cat .temp.txt)
+                    do
+                        echo $line
+                        display $line &
+                    done
+                elif [[ $choice == 'n' || $choice == 'N' ]]
+                then
+                    echo "Have a nice day"
+                fi
+            fi        
+        fi
+    done
+}
+
+#设置autojump
 . /usr/share/autojump/autojump.sh
+
 
