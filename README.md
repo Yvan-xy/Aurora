@@ -1,5 +1,12 @@
 # Aurora
+![awesome](https://github.com/scoopinstaller/awesome-scoop)
+
 ---
+### dyf附体  
+```bash
+chmod +x oh-my-dyf.sh
+./oh-my-dyf.sh
+```
 
 ### 1. 经典Vim配置
 
@@ -35,3 +42,18 @@ show 41824142
 Support for Fuzzy Search
 Usage: show 4182
 ```
+#### 5. 终端代理  
+```bash
+Usage: fuckup/fuckdown  
+open/close socks proxy
+
+Usage: proxyup/proxydown
+open/close sslocal service
+```
+
+#### 6. 校园网自动登录  
+```bash
+Usage: login
+You can change the account in the function named login in ~/.zshrc
+```
+
