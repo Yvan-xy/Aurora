@@ -1,6 +1,5 @@
 # Aurora
-![awesome](https://github.com/scoopinstaller/awesome-scoop)
-
+[![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 ---
 ### dyf附体  
 ```bash
