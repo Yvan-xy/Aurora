@@ -240,7 +240,7 @@ function show(){
                     done
                 elif [[ $choice == 'n' || $choice == 'N' ]]
                 then
-                    echo "Have a nice day"
+                    echo "Have a nice day! :)"
                 fi
             fi        
         fi

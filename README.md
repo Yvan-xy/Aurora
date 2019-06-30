@@ -3,7 +3,6 @@
 
 [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-
 ---
 ### dyf附体  
 ```bash
@@ -16,6 +15,7 @@ chmod +x oh-my-dyf.sh
 ```zsh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cp ./vimrc ~/.vimrc
 ```
 作为vim重度依赖患者,受不了没有插件哈哈哈哈哈哈哈哈
 
@@ -23,7 +23,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 ```zsh
 curl -sLf https://spacevim.org/cn/install.sh | bash
-cp Aurora/init.toml ~/.SpaceVim.d/init.toml
+cp ./init.toml ~/.SpaceVim.d/init.toml
 ```
 ### 3. zsh gdb与tmux  
 

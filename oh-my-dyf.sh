@@ -30,7 +30,7 @@ function spaceVim(){
     logInfo "正在设置SpaceVim..."
 
     curl -sLf https://spacevim.org/cn/install.sh | bash
-    cp Aurora/init.toml ~/.SpaceVim.d/init.toml
+    cp ./init.toml ~/.SpaceVim.d/init.toml
 
     logInfo "SpaceVim设置完毕"
 }
