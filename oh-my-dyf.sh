@@ -1,11 +1,15 @@
 #!  /bin/bash
 function logo(){
-    echo '          __                                         __        ____'
-    echo '  ____   / /_          ____ ___   __  __        ____/ /__  __ / __/'
-    echo ' / __ \ / __ \ ______ / __ `__ \ / / / /______ / __  // / / // /_  '
-    echo '/ /_/ // / / //_____// / / / / // /_/ //_____// /_/ // /_/ // __/  '
-    echo '\____//_/ /_/       /_/ /_/ /_/ \__, /        \__,_/ \__, //_/     '
-    echo '                               /____/               /____/         '
+    logoFont '          __                                         __        ____'
+    logoFont '  ____   / /_          ____ ___   __  __        ____/ /__  __ / __/'
+    logoFont ' / __ \ / __ \ ______ / __ `__ \ / / / /______ / __  // / / // /_  '
+    logoFont '/ /_/ // / / //_____// / / / / // /_/ //_____// /_/ // /_/ // __/  '
+    logoFont '\____//_/ /_/       /_/ /_/ /_/ \__, /        \__,_/ \__, //_/     '
+    logoFont '                               /____/               /____/         '
+}
+
+function logoFont(){
+    echo -e "\033[34m$1\033[0m"  
 }
 
 function logInfo(){
@@ -77,6 +81,10 @@ function setShadowsocks(){
     logInfo "shadowsocks设置完毕"
 }
 
+function bye(){
+    echo -e "\033[5;31mWish you a nice day! :) \033[0m"
+}
+
 function main(){
     logo
     classicVim
@@ -86,6 +94,7 @@ function main(){
     setTmux
     setPwn
     setShadowsocks
+    bye
 }
 
 main 
