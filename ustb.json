@@ -1,0 +1,10 @@
+{
+    "server": "129.204.53.249",
+    "server_port": 10002,
+    "method": "aes-128-ctr",
+    "password": "404",
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "fast_open": true,
+    "workers": 1
+}
