@@ -97,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export ALL_PROXY=socks5://127.0.0.1:1080
+# export ALL_PROXY=socks5://127.0.0.1:1080
 
 
 #将nodejs添加到环境变量
@@ -123,20 +123,11 @@ alias shit="nmap -O -A"
 #查寻外网ip
 alias myip="curl https://tool.lu/ip/"
 
-#创建项目
-alias jackson="/home/Hammer/myProject.sh"
-
 #启动postman
 alias postman="/home/Hammer/Postman/Postman"
 
 #启动githack
 alias githack="/home/Hammer/Githack/GitHack.py"
-
-#启动heartbleed检测
-alias heartbleed="/home/Hammer/heartbleed/ssltest.py"
-
-#启动androidStudio
-alias anstudio="/home/android-studio/bin/studio.sh"
 
 #连接ibeike
 alias ibeike="/home/code/shell/ibei.sh"
@@ -148,7 +139,7 @@ alias ali="/home/code/shell/ali.sh"
 alias cent="/home/code/shell/cent.sh"
 
 #连接404
-alias ever404="ssh -p2333 dyf@202.204.62.198"
+alias ever404="ssh -p2333 dyf@202.204.62.222"
 
 #设置时钟
 alias settime="ntpdate time.nist.gov"
@@ -161,7 +152,7 @@ alias fuckdown="unset ALL_PROXY"
 #校园网登录  
 function login(){
     fuckdown
-    curl -s -d "DDDDD=libzhuanxian&upass=let1234&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
+    curl -s -d "DDDDD=&upass=&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
     ip=`myip | grep IP | cut -d " " -f 2`
     wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
     wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
