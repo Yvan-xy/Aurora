@@ -28,7 +28,6 @@ function classicVim(){
     logInfo "正在设置classicVim..."
 
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp ./vimrc ~/.vimrc
 
     logInfo "classicVim设置完毕"
@@ -66,7 +65,7 @@ function setGdb(){
 function setTmux(){
     logInfo "正在设置tmux..."
 
-    apt install tmux
+    sudo apt install -y tmux
     cp ./tmux.conf ~/.tmux.conf
 
     logInfo "tmux设置完毕"
