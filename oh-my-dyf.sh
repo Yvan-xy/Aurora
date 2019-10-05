@@ -16,6 +16,14 @@ function logInfo(){
     echo -e "\033[35m[+]\033[0m\033[36m$1\033[0m"
 }
 
+function basicEnv(){
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install -y build-essential
+    sudo apt install -y curl wget
+    sudo apt install -y git
+    sudo apt install -y cmake
+}
+
 function classicVim(){
     logInfo "正在设置classicVim..."
 
@@ -88,12 +96,12 @@ function bye(){
 function main(){
     logo
     classicVim
-    spaceVim
-    setZsh
+    # spaceVim
     setGdb
     setTmux
     setPwn
     setShadowsocks
+    setZsh
     bye
 }
 
