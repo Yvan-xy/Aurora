@@ -176,43 +176,8 @@ alias fuckdown="unset ALL_PROXY"
 #查看电池电量
 alias power="cat /sys/class/power_supply/BAT1/capacity"
 
-#校园网登录  
-function login(){
-    fuckdown
-    curl -s -d "DDDDD=41824142&upass=Dyf12345&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
-    ip=`myip | grep IP | cut -d " " -f 2`
-    wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
-    wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
-    eth0_intranet=`ifconfig | grep -A 2 eth0 | grep "inet .*" -o | cut -d " " -f 2`
-    eth0_mac=`ifconfig | grep -A 2 eth0 | grep "inet6 .*" -o | cut -d " " -f 2`
-    if [[ $ip != '' ]]
-    then
-        echo "Login success!"
-        echo "Extranet ip: "$ip
-        if [[ $wlan0_intranet =~ "." ]]
-        then            
-            echo 1
-            echo "Intranet ip: "$wlan0_intranet
-            echo "MAC : "$wlan0_mac
-        elif [[ $eth0_intranet =~ "." ]]
-        then
-            echo "Intranet ip: "$eth0_intranet
-            echo "MAC : "$eth0_mac
-        fi
-    fi
-}
-
 #设置fucks
 eval $(thefuck --alias)
-
-#设置rtsp流读取
-function fuckcam(){
-    for line in $(cat $1)
-    do
-        ffplay  -rtsp_transport tcp -i $line &
-        echo $line
-    done
-}
 
 #查询大文件
 alias large="find / -size +100M"
@@ -222,6 +187,15 @@ alias pdf="google-chrome"
 
 #编辑zshrc
 alias zshrc="vim ~/.zshrc"
+
+#设置autojump
+. /usr/share/autojump/autojump.sh
+
+#cmake rebuild
+alias rebuild="cd .. && rm -r build && mkdir build && cd build"
+
+#set desktop black
+alias down="sh -c 'echo 0 >/sys/class/backlight/intel_backlight/brightness'"
 
 #web_pass解密 
 function webpass(){
@@ -271,11 +245,72 @@ function show(){
     done
 }
 
-#设置autojump
-. /usr/share/autojump/autojump.sh
+#设置rtsp流读取
+function fuckcam(){
+    for line in $(cat $1)
+    do
+        ffplay  -rtsp_transport tcp -i $line &
+        echo $line
+    done
+}
 
-#cmake rebuild
-alias rebuild="cd .. && rm -r build && mkdir build && cd build"
+#校园网登录  
+function login(){
+    fuckdown
+    curl -s -d "DDDDD=41824142&upass=Dyf12345&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
+    ip=`myip | grep IP | cut -d " " -f 2`
+    wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
+    wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
+    eth0_intranet=`ifconfig | grep -A 2 eth0 | grep "inet .*" -o | cut -d " " -f 2`
+    eth0_mac=`ifconfig | grep -A 2 eth0 | grep "inet6 .*" -o | cut -d " " -f 2`
+    if [[ $ip != '' ]]
+    then
+        echo "Login success!"
+        echo "Extranet ip: "$ip
+        if [[ $wlan0_intranet =~ "." ]]
+        then            
+            echo 1
+            echo "Intranet ip: "$wlan0_intranet
+            echo "MAC : "$wlan0_mac
+        elif [[ $eth0_intranet =~ "." ]]
+        then
+            echo "Intranet ip: "$eth0_intranet
+            echo "MAC : "$eth0_mac
+        fi
+    fi
+}
 
-#set desktop black
-alias down="sh -c 'echo 0 >/sys/class/backlight/intel_backlight/brightness'"
+#更新MAC
+function changeMac(){
+    mac=$(setAddress)
+    echo $mac
+    ifconfig $1 down
+    ifconfig $1 hw ether $mac
+    ifconfig $1 up
+}                                                                                                                              
+
+function getSeed(){                                                                                                            
+    ((seed=$(($RANDOM % 256))))                                                                                                 
+    if [[ $seed < 16 ]]
+    then                                                                                                                       
+        seed=$(($seed + 16))
+    fi                                                                                                                         
+    return $seed                                                                                                               
+}                                                                                                                              
+
+function setAddress(){
+    eth=''
+    for ((i=0;i<6;i++))
+    do
+        getSeed                                                                                                                        
+        ins=$?
+        eth="$eth$(printf '%x' $ins):"
+    done
+    echo $eth | sed 's/.$//'
+}
+
+function fade(){
+    changeMac "eth0"
+    changeMac "wlan0"
+}
+
