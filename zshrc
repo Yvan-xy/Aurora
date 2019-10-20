@@ -257,7 +257,7 @@ function fuckcam(){
 #校园网登录  
 function login(){
     fuckdown
-    curl -s -d "DDDDD=41824142&upass=Dyf12345&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
+    curl -s -d "DDDDD=&upass=&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
     ip=`myip | grep IP | cut -d " " -f 2`
     wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
     wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
