@@ -150,7 +150,7 @@ alias ali="/home/code/shell/ali.sh"
 alias cent="/home/code/shell/cent.sh"
 
 #连接404
-alias ever404="ssh -p2333 dyf@202.204.62.222"
+alias ever404="ssh -p2333 dyf@202.204.62.168"
 
 #连接black
 alias black="ssh dyf@202.204.62.70"
