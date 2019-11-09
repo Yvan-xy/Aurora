@@ -173,9 +173,6 @@ alias proxy6="sslocal -c ~/sslocal6.json"
 alias fuckup="export ALL_PROXY=socks5://127.0.0.1:7891"
 alias fuckdown="unset ALL_PROXY"
 
-#查看电池电量
-alias power="cat /sys/class/power_supply/BAT1/capacity"
-
 #设置fucks
 eval $(thefuck --alias)
 
@@ -314,3 +311,14 @@ function fade(){
     changeMac "wlan0"
 }
 
+function logInfo(){
+    echo -e "\033[35m[+]$1\033[0m:\033[36m$2\033[0m"
+}
+
+
+#查看电池电量
+function power(){
+    capacity=$(cat /sys/class/power_supply/BAT1/capacity)
+    logInfo "Power" $capacity
+    echo -e "\033[5;31mLet's light up the world! :) \033[0m"
+}
