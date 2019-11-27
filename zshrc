@@ -100,6 +100,11 @@ source $ZSH/oh-my-zsh.sh
 #终端代理
 # export ALL_PROXY=socks5://127.0.0.1:1080
 
+# 添加rust
+source $HOME/.cargo/env
+
+export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
+
 #将nodejs添加到环境变量
 export NODE_HOME=/usr/local/node/
 export PATH=$NODE_HOME/bin:$PATH
@@ -150,7 +155,7 @@ alias ali="/home/code/shell/ali.sh"
 alias cent="/home/code/shell/cent.sh"
 
 #连接404
-alias ever404="ssh -p2333 dyf@202.204.62.168"
+alias ever404="ssh -p2333 dyf@202.204.62.38"
 
 #连接black
 alias black="ssh dyf@202.204.62.70"
@@ -295,7 +300,7 @@ function getSeed(){
     return $seed                                                                                                               
 }                                                                                                                              
 
-function setAddress(){
+function setAddress() {
     eth=''
     for ((i=0;i<6;i++))
     do
@@ -306,19 +311,29 @@ function setAddress(){
     echo $eth | sed 's/.$//'
 }
 
-function fade(){
+function fade() {
     changeMac "eth0"
     changeMac "wlan0"
 }
 
-function logInfo(){
+function logInfo() {
     echo -e "\033[35m[+]$1\033[0m:\033[36m$2\033[0m"
 }
 
 
 #查看电池电量
-function power(){
+function power() {
     capacity=$(cat /sys/class/power_supply/BAT1/capacity)
     logInfo "Power" $capacity
     echo -e "\033[5;31mLet's light up the world! :) \033[0m"
+}
+
+function hup() {
+    export HTTP_PROXY=http://127.0.0.1:7890
+    export HTTPS_PROXY=http://127.0.0.1:7890
+}
+
+function hdown() {
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
 }

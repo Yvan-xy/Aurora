@@ -19,7 +19,7 @@ function logInfo(){
 function basicEnv(){
     sudo apt update && sudo apt upgrade -y
     sudo apt install -y build-essential
-    sudo apt install -y zsh
+    sudo apt install -y zsh screenfetch
     sudo apt install -y curl wget
     sudo apt install -y git
     sudo apt install -y cmake
@@ -95,6 +95,7 @@ function bye(){
 
 function main(){
     logo
+
     classicVim
     # spaceVim
     setGdb
@@ -102,6 +103,7 @@ function main(){
     setPwn
     setShadowsocks
     setZsh
+
     bye
 }
 
