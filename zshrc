@@ -329,11 +329,15 @@ function power() {
 }
 
 function hup() {
-    export HTTP_PROXY=http://127.0.0.1:7890
-    export HTTPS_PROXY=http://127.0.0.1:7890
+    export http_proxy="http://127.0.0.1:8001" 
+    export HTTP_PROXY="http://127.0.0.1:8001" 
+    export https_proxy="http://127.0.0.1:8001"
+    export HTTPS_PROXY="http://127.0.0.1:8001"
 }
 
 function hdown() {
     unset HTTP_PROXY
+    unset http_proxy
     unset HTTPS_PROXY
+    unset https_proxy
 }
