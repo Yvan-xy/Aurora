@@ -99,7 +99,7 @@ function main(){
     classicVim
     # spaceVim
     setGdb
-    setTmux
+    # setTmux
     setPwn
     setShadowsocks
     setZsh
