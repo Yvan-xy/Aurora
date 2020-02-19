@@ -71,4 +71,14 @@ You can change the account in the function named login in ~/.zshrc
 切换到指定编号的窗口: C-a <number>
 从列表中选择会话：C-a w
 ```
+#### 8. 关于服务器中文字体支持
+```sh
+sudo apt-get install language-pack-zh*
+sudo vim /etc/environment
+# 添加一下配置
+LANG="zh_CN.UTF-8"
+LANGUAGE="zh_CN:zh:en_US:en"
+sudo dpkg-reconfigure locales
+```
+
 
