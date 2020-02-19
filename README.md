@@ -59,4 +59,16 @@ open/close sslocal service
 Usage: login
 You can change the account in the function named login in ~/.zshrc
 ```
+#### 7. Tmux的设置
+
+这里重新绑定了tmux的前缀键，默认的绑定太反人类，Ctrl-a为当前前缀键，当前快捷键如下：
+```shell
+水平分割窗口：C-a C-d
+垂直分割窗口：C-a C-w
+解绑当前会话：C-a d
+绑定会话：tmux attach -t <session-id>
+新建窗口：C-a c
+切换到指定编号的窗口: C-a <number>
+从列表中选择会话：C-a w
+```
 
