@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/root/.oh-my-zsh"
+  export ZSH="/Users/dyf/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -121,8 +121,17 @@ export NVM_DIR="$HOME/.nvm"
 #将pwntools等工具添加到环境变量
 export PATH=$PATH:/usr/local/bin
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# llvm
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# qt
+export PATH="/usr/local/opt/qt/bin:$PATH"
+
+# pwn_docker
+alias pwn="docker exec -it 47 /bin/zsh"
 
 #nmap扫描主机
 alias shit="nmap -O -A"
@@ -178,9 +187,6 @@ alias proxy6="sslocal -c ~/sslocal6.json"
 alias fuckup="export ALL_PROXY=socks5://127.0.0.1:7891"
 alias fuckdown="unset ALL_PROXY"
 
-#设置fucks
-eval $(thefuck --alias)
-
 #查询大文件
 alias large="find / -size +100M"
 
@@ -191,7 +197,7 @@ alias pdf="google-chrome"
 alias zshrc="vim ~/.zshrc"
 
 #设置autojump
-. /usr/share/autojump/autojump.sh
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 #cmake rebuild
 alias rebuild="cd .. && rm -r build && mkdir build && cd build"
@@ -331,13 +337,11 @@ function power() {
 function hup() {
     export http_proxy="http://127.0.0.1:8001" 
     export HTTP_PROXY="http://127.0.0.1:8001" 
-    export https_proxy="http://127.0.0.1:8001"
+    export https_proxy="http://127.0.0.1:8001" 
     export HTTPS_PROXY="http://127.0.0.1:8001"
 }
 
 function hdown() {
     unset HTTP_PROXY
-    unset http_proxy
     unset HTTPS_PROXY
-    unset https_proxy
 }
