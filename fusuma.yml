@@ -1,0 +1,61 @@
+# mv fusuma.yml to ~/.config/fusuma/config.yml
+swipe:
+  3: 
+    left: 
+      command: 'xdotool key ctrl+alt+e'
+    right: 
+      command: 'xdotool key ctrl+alt+q'
+    up:
+      command: 'xdotool key ctrl+alt+s'
+    down: 
+      command: 'xdotool key ctrl+alt+w'
+  4:
+    left:
+      workspace: 'next' # Switch to next workspace
+      keypress:
+        LEFTSHIFT: 
+          window: 'next' # Move window to next workspace
+        LEFTMETA:
+          command: 'xdotool key --clearmodifiers super+ctrl+Left' # Move window to left side
+    right:
+      workspace: 'prev' # Switch to previous workspace
+      keypress:
+        LEFTSHIFT: 
+          window: 'prev' # Move window to previous workspace
+        LEFTMETA:
+          command: 'xdotool key --clearmodifiers super+ctrl+Right'  # Move window to right side
+    up:
+      command: 'xdotool key Control_L+F9' # Workspace overview
+      keypress:
+        LEFTMETA:
+          window:
+            maximized: 'toggle' # Toggle Maximize/Unmaximize Window
+    down:
+      command: 'xdotool key Shift_L+Alt_L+Tab' #aaaaa
+      keypress:
+        LEFTMETA:
+          window: 'close' # Close window
+
+pinch:
+  2:
+    in:
+      command: 'xdotool key ctrl+plus'
+      threshold: 0.1
+    out:
+      command: 'xdotool key ctrl+minus'
+      threshold: 0.1
+  4:
+    in:
+      command: 'xdotool key super+a' # Window overview
+    out:
+      command: 'xdotool key super+s' # Workspace overview
+      
+
+
+threshold:
+  swipe: 0.1
+  pinch: 0.1
+
+interval:
+  swipe: 0,1
+  pinch: 0.1
