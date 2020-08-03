@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # export ALL_PROXY=socks5://127.0.0.1:1080
 
 # 添加rust
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
 
@@ -335,13 +335,17 @@ function power() {
 }
 
 function hup() {
-    export http_proxy="http://127.0.0.1:8001" 
-    export HTTP_PROXY="http://127.0.0.1:8001" 
-    export https_proxy="http://127.0.0.1:8001" 
-    export HTTPS_PROXY="http://127.0.0.1:8001"
+    export http_proxy="http://127.0.0.1:7890" 
+    export HTTP_PROXY="http://127.0.0.1:7890" 
+    export https_proxy="http://127.0.0.1:7890" 
+    export HTTPS_PROXY="http://127.0.0.1:7890"
 }
 
 function hdown() {
     unset HTTP_PROXY
     unset HTTPS_PROXY
 }
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
