@@ -115,11 +115,18 @@ export PATH=$PATH:/home/Hammer/wabt/bin/
 #将go环境添加到环境变量
 export PATH=$PATH:/usr/local/go/bin
 
+#/usr/local/bin
+export PATH=$PATH:/usr/local/bin
+
 #将nvm添加到环境变量
 export NVM_DIR="$HOME/.nvm"
 
 #将pwntools等工具添加到环境变量
 export PATH=$PATH:/usr/local/bin
+
+#theos
+export THEOS=/usr/local/opt/theos
+export PATH=$PATH:/usr/local/opt/theos/bin
 
 # llvm
 export LDFLAGS="-L/usr/local/opt/libffi/lib"
@@ -349,3 +356,4 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+export PATH="/usr/local/opt/qt/bin:$PATH"
