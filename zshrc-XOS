@@ -103,8 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # 添加rust
 # source $HOME/.cargo/env
 
-export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
-
 #将nodejs添加到环境变量
 export NODE_HOME=/usr/local/node/
 export PATH=$NODE_HOME/bin:$PATH
@@ -129,10 +127,14 @@ export THEOS=/usr/local/opt/theos
 export PATH=$PATH:/usr/local/opt/theos/bin
 
 # llvm
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH=$PATH:/usr/local/opt/llvm/bin/
+
+# export LDFLAGS="-L/usr/local/opt/libffi/lib"
+# export LDFLAGS="-L/usr/local/opt/llvm/lib"
+# export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+#capstone
+export DYLD_LIBRARY_PATH=/usr/local/opt/capstone/lib/:$DYLD_LIBRARY_PATH
 
 # qt
 export PATH="/usr/local/opt/qt/bin:$PATH"
@@ -146,59 +148,11 @@ alias shit="nmap -O -A"
 #查寻外网ip
 alias myip="curl https://tool.lu/ip/"
 
-#创建项目
-alias jackson="/home/Hammer/myProject.sh"
-
-#启动postman
-alias postman="/home/Hammer/Postman/Postman"
-
-#启动githack
-alias githack="/home/Hammer/Githack/GitHack.py"
-
-#启动heartbleed检测
-alias heartbleed="/home/Hammer/heartbleed/ssltest.py"
-
-#启动androidStudio
-alias anstudio="/home/android-studio/bin/studio.sh"
-
-#连接ibeike
-alias ibeike="/home/code/shell/ibei.sh"
-
-#连接ali
-alias ali="/home/code/shell/ali.sh"
-
-#连接cent
-alias cent="/home/code/shell/cent.sh"
-
-#连接404
-alias ever404="ssh -p2333 dyf@202.204.62.38"
-
-#连接black
-alias black="ssh dyf@202.204.62.70"
-
-#设置时钟
-alias settime="ntpdate time.nist.gov"
-
 #sucker
 alias suck="wget -r -npH -k -c -nv"
 
-#struts
-alias struts="python3 /home/Hammer/Scanner/Struts2-Scan/Struts2Scan.py -u "
-
-#set Chrome
-alias setchrome="vim `whereis google-chrome | awk -F ' ' {'print $2'}`"
-
-#设置代理
-alias proxyup="sslocal -c ~/sslocal.json"
-alias proxy6="sslocal -c ~/sslocal6.json"
-alias fuckup="export ALL_PROXY=socks5://127.0.0.1:7891"
-alias fuckdown="unset ALL_PROXY"
-
 #查询大文件
 alias large="find / -size +100M"
-
-#查看pdf
-alias pdf="google-chrome"
 
 #编辑zshrc
 alias zshrc="vim ~/.zshrc"
@@ -214,50 +168,7 @@ alias down="sh -c 'echo 0 >/sys/class/backlight/intel_backlight/brightness'"
 
 #web_pass解密 
 function webpass(){
-    java -classpath "/home/Hammer/Project/USTB_HACK/result/Misc/" Cipher1 $1
-}
-
-#查看照片
-function show(){
-    for name in $@
-    do
-        contain=`ls ./`
-        if echo "${contain[@]}" | grep -w $name'.jpg'
-        then
-            display $name'.jpg' &
-            continue
-        fi
-        if echo "${contain[@]}" | grep -w $name'.jpeg'
-        then
-            display $name'.jpeg' &
-            continue
-        fi
-        if echo "${contain[@]}" | grep -w $name'.png'
-        then
-            display $name'.png' &
-            continue
-        else
-            fuzz=`echo ${contain[@]} | grep $name`
-            echo $fuzz > .temp.txt
-            i=0
-            if [[ $(cat .temp.txt) > 20 ]]
-            then
-                echo 'if continue?(y/n)  (items more then 20)'
-                read choice
-                if [[ $choice == 'y' || $choice == 'Y' ]]
-                then 
-                    for line in $(cat .temp.txt)
-                    do
-                        echo $line
-                        display $line &
-                    done
-                elif [[ $choice == 'n' || $choice == 'N' ]]
-                then
-                    echo "Have a nice day"
-                fi
-            fi        
-        fi
-    done
+    java -classpath "/Users/dyf/code/solo/USTB_HACK/result/Misc/" Cipher1 $1
 }
 
 #设置rtsp流读取
@@ -271,8 +182,8 @@ function fuckcam(){
 
 #校园网登录  
 function login(){
-    fuckdown
-    curl -s -d "DDDDD=&upass=&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
+    hdown
+    curl -s -d "DDDDD=41824142&upass=Dyf12345&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
     ip=`myip | grep IP | cut -d " " -f 2`
     wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
     wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
@@ -351,9 +262,32 @@ function hup() {
 function hdown() {
     unset HTTP_PROXY
     unset HTTPS_PROXY
+    unset http_proxy 
+    unset https_proxy
 }
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
-export PATH="/usr/local/opt/qt/bin:$PATH"
+
+function lldbup() {
+    command script import /Users/dyf/code/Hammar/debug/voltron/voltron/entry.py
+}
+
+# pip zsh completion start
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip3
+# pip zsh completion end
+
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+export PATH="/Users/dyf/Library/Python/3.9/bin:$PATH"
+# CLANG_HOME="/Users/dyf/code/misc/llvm-project/release"
+CLANG_HOME="/usr/local/opt/llvm/"
