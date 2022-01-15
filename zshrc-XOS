@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # export ALL_PROXY=socks5://127.0.0.1:1080
 
 # 添加rust
-# source $HOME/.cargo/env
+source $HOME/.cargo/env
 
 #将nodejs添加到环境变量
 export NODE_HOME=/usr/local/node/
@@ -183,7 +183,7 @@ function fuckcam(){
 #校园网登录  
 function login(){
     hdown
-    curl -s -d "DDDDD=41824142&upass=Dyf12345&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
+    curl -s -d "DDDDD=libzhuanxian_ipv6&upass=abc123&v6ip=&0MKKey=123456789" 202.204.48.66 > /dev/null
     ip=`myip | grep IP | cut -d " " -f 2`
     wlan0_intranet=`ifconfig | grep -A 2 wlan0 | grep "inet .*" -o | cut -d " " -f 2`
     wlan0_mac=`ifconfig | grep -A 2 wlan0 | grep "inet6 .*" -o | cut -d " " -f 2`
@@ -273,6 +273,10 @@ function lldbup() {
     command script import /Users/dyf/code/Hammar/debug/voltron/voltron/entry.py
 }
 
+function batdiff() {
+    git diff --name-only --diff-filter=d | xargs bat --diff
+}
+
 # pip zsh completion start
 function _pip_completion {
   local words cword
@@ -291,3 +295,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export PATH="/Users/dyf/Library/Python/3.9/bin:$PATH"
 # CLANG_HOME="/Users/dyf/code/misc/llvm-project/release"
 CLANG_HOME="/usr/local/opt/llvm/"
+[ -f "/Users/dyf/.ghcup/env" ] && source "/Users/dyf/.ghcup/env" # ghcup-env
+
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
